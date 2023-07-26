@@ -13,20 +13,26 @@ function reScan() {
   html5QrcodeScanner.resume();
 }
 function getData(encText, dayID, ind) {
-  console.log(checkVar[ind - 1], dayID, ind, json);
+//   console.log(checkVar, dayID, ind, json);
 
   if (checkVar == undefined) {
     textBox.innerHTML = "QR CODE INVALID";
   } else {
     if (
-      encText + dayID == checkVar[ind - 1] &&
+      encText == checkVar[ind - 1] &&
       !obj.entry.includes(checkVar[ind - 1])
     ) {
       textBox.innerHTML = "VALID";
       obj.entry.push(checkVar[ind - 1]);
       json = JSON.stringify(obj);
     } else {
-      textBox.innerHTML = "QR CODE INVALID";
+        if(obj.entry.includes(checkVar[ind - 1])){
+            textBox.innerHTML = "User has already scanned!";
+        }
+        else{
+            textBox.innerHTML = "Wrong day code is being used!";
+        }
+    
     }
   }
 }
@@ -37,9 +43,9 @@ function onScanSuccess(decodedText, decodedResult) {
   textBox.innerHTML = decodedText;
   let dayID = dayFlag.options[dayFlag.selectedIndex].value;
   index = parseInt(dayID.slice(-1));
-
+  console.log(decodedText.slice(0, -4));
   $.getJSON("content.json", function (data) {
-    checkVar = data[decodedText];
+    checkVar = data[decodedText.slice(0, -4)];
     getData(decodedText, dayID, index);
   });
 
