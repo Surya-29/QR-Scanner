@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MUN Event Scanner</title>
+    <script src="html5-qrcode.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  </head>
+  <body>
+    <div id="content-box">
+      <select name="days" id="dayId">
+        <option value="day1">Day 1</option>
+        <option value="day2">Day 2</option>
+        <option value="day3">Day 3</option>
+      </select>
+
+      <div style="width: 500px" id="reader"></div>
+
+      <p id="dialog"></p>
+
+      <button class="rescan" onclick="reScan()">Click here to rescan!</button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

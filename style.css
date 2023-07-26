@@ -1,0 +1,22 @@
+body{
+    display: flex;
+}
+#content-box{
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+#dialog{
+    font-size: 20px;
+    text-align: center;
+}
+select{
+    padding:3%;
+    display: flex;
+    margin: 3% auto;
+}
+.rescan{
+    width: 25%;
+    display: flex;
+    margin: 0 auto;
+}
