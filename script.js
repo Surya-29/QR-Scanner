@@ -53,8 +53,9 @@ function onScanSuccess(decodedText, decodedResult) {
 }
 
 var html5QrcodeScanner = new Html5QrcodeScanner("reader", {
-  fps: 10,
-  qrbox: 300,
+  fps: 15,
+  qrbox: 350,
+  aspectRatio: 0.8,
 });
 
 html5QrcodeScanner.render(onScanSuccess);
