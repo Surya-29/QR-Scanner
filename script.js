@@ -1,38 +1,50 @@
 let textBox = document.getElementById("dialog");
+let initId = document.getElementById("initId");
 let contentBox = document.getElementById("content-box");
 let dayFlag = document.getElementById("dayId");
 let cacheArray = [];
-let obj = { entry: [] };
-var json;
 let index = 0;
 
 let checkVar = "";
 
+function init() {
+  window.localStorage.setItem("readJSON", 1);
+  if (window.localStorage.getItem("readJSON")) {
+    $.getJSON("content.json", function (data) {
+      window.localStorage.setItem("data", JSON.stringify(data));
+    });
+  }
+  window.localStorage.setItem("readJSON", 0);
+}
+if (window.localStorage.getItem("readJSON")) {
+  initId.innerHTML = "";
+}
 function reScan() {
   textBox.innerHTML = "";
   html5QrcodeScanner.resume();
 }
-function getData(encText, dayID, ind) {
-//   console.log(checkVar, dayID, ind, json);
+
+function getData(encText, dayID, index) {
+  html5QrcodeScanner.pause();
+  let cont = JSON.parse(window.localStorage.getItem("data"));
+  checkVar = cont[encText.slice(0, -4)];
 
   if (checkVar == undefined) {
     textBox.innerHTML = "QR CODE INVALID";
   } else {
-    if (
-      encText == checkVar[ind - 1] &&
-      !obj.entry.includes(checkVar[ind - 1])
-    ) {
+    if (checkVar.includes(encText) && dayID == encText.slice(-4)) {
       textBox.innerHTML = "VALID";
-      obj.entry.push(checkVar[ind - 1]);
-      json = JSON.stringify(obj);
+      let indOfEntry = checkVar.indexOf(encText);
+      checkVar.splice(indOfEntry, 1);
+      cont[encText.slice(0, -4)] = checkVar;
+
+      window.localStorage.setItem("data", JSON.stringify(cont));
     } else {
-        if(obj.entry.includes(checkVar[ind - 1])){
-            textBox.innerHTML = "User has already scanned!";
-        }
-        else{
-            textBox.innerHTML = "Wrong day code is being used!";
-        }
-    
+      if (!(dayID == encText.slice(-4))) {
+        textBox.innerHTML = "Wrong day code is being used!";
+      } else {
+        textBox.innerHTML = "User has already scanned!";
+      }
     }
   }
 }
@@ -41,15 +53,13 @@ function onScanSuccess(decodedText, decodedResult) {
   // Handle on success condition with the decoded text or result.
   console.log(`Scan result: ${decodedText}`, decodedResult);
   textBox.innerHTML = decodedText;
-  let dayID = dayFlag.options[dayFlag.selectedIndex].value;
-  index = parseInt(dayID.slice(-1));
-  console.log(decodedText.slice(0, -4));
-  $.getJSON("content.json", function (data) {
-    checkVar = data[decodedText.slice(0, -4)];
-    getData(decodedText, dayID, index);
-  });
 
-  html5QrcodeScanner.pause();
+  let dayID = dayFlag.options[dayFlag.selectedIndex].value;
+
+  index = parseInt(dayID.slice(-1));
+  // console.log(dayID,index);
+  window.localStorage.getItem("data");
+  getData(decodedText, dayID, index);
 }
 
 var html5QrcodeScanner = new Html5QrcodeScanner("reader", {
