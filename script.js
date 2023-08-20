@@ -23,6 +23,9 @@ function reScan() {
   textBox.innerHTML = "";
   html5QrcodeScanner.resume();
 }
+function clr(){
+  window.localStorage.clear();
+}
 
 function getData(encText, dayID, index) {
   html5QrcodeScanner.pause();

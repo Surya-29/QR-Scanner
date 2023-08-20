@@ -16,10 +16,10 @@ select{
     margin: 3% auto;
 }
 .rescan{
-    
     width: 30%;
     align-items:center;
     display: flex;
+    flex-direction: column;
     margin: 0 auto;
 }
 .initButton{
@@ -28,8 +28,17 @@ select{
     display: flex;
     flex-direction: column;
     margin: 0 auto;
+    margin-top: 10px;
 }
 
+.clrButton{
+
+    align-items:center;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-top: 10px;
+}
 /* CSS */
 button {
   background-color: #0095ff;
