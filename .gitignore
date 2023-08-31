@@ -1,3 +1,4 @@
 /qr
-mail_ids.xlsx
+/emails
+/createJSON.py
 qrGenerator.py
