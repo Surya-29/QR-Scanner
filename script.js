@@ -17,7 +17,7 @@ function init() {
   window.localStorage.setItem("readJSON", 0);
 }
 if (window.localStorage.getItem("readJSON")) {
-  initId.innerHTML = "";
+  initId.remove();
 }
 function reScan() {
   textBox.innerHTML = "";

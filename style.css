@@ -91,6 +91,7 @@ select{
     display: flex;
     flex-direction: column;
     margin: 0 auto;
+    font-size: 21px;
 }
 .initButton{
     background-color: green;
