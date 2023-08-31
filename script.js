@@ -35,11 +35,11 @@ function getData(encText, dayID, index) {
   if (checkVar == undefined) {
     textBox.innerHTML = "QR CODE INVALID &#10060";
     textBox.style.color = "red";
-    textBox.style.fontSize = "16px";
+    textBox.style.fontSize = "26px";
   } else {
     if (checkVar.includes(encText) && dayID == encText.slice(-4)) {
       textBox.innerHTML = "VALID &#10003";
-      textBox.style.fontSize = "16px";
+      textBox.style.fontSize = "26px";
       textBox.style.color = "green";
       let indOfEntry = checkVar.indexOf(encText);
       checkVar.splice(indOfEntry, 1);
@@ -49,11 +49,11 @@ function getData(encText, dayID, index) {
     } else {
       if (!(dayID == encText.slice(-4))) {
         textBox.innerHTML = "Wrong day code is being used! &#10060";
-        textBox.style.fontSize = "16px";
+        textBox.style.fontSize = "26px";
         textBox.style.color = "red";
       } else {
         textBox.innerHTML = "User has already scanned! &#10060";
-        textBox.style.fontSize = "16px";
+        textBox.style.fontSize = "26px";
         textBox.style.color = "red";
       }
     }
