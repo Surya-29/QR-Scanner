@@ -9,7 +9,16 @@
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
   </head>
   <body>
-    
+    <div id="mySidebar" class="sidebar">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <button class="initButton" id="initId" onclick="init()">
+        Click if logged in first time!
+      </button>
+      <button class="clrButton" id="clrId" onclick="clr()">Clear Cache</button>
+    </div>
+
+  <div id="main">
+    <button class="openbtn" onclick="openNav()">&#9776;</button>
     <div id="content-box">
       <select name="days" id="dayId">
         <option value="Day1">Day 1</option>
@@ -23,10 +32,19 @@
 
       <button class="rescan" onclick="reScan()">Click here to rescan!</button>
 
-      <button class="initButton" id="initId" onclick="init()">Click if logged in first time!</button>
-      <button class="clrButton" id="clrId" onclick="clr()">Clear Cache</button>
+      
     </div>
+  </div>
+    </div>
+    <!-- <div class="sidebar">
+      <header>QR Scanner MUN</header>
+      <ul>
+        <li><button class="close-btn" onclick="close()"></button></li>
+      </ul>
+    </div> -->
 
+    
+    <script src="navbar.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
