@@ -1,4 +1,9 @@
 /qr
 /emails
+/qr_new
+mail_ids.xlsx
+mailing_list_updated.xlsx
+new_mails.csv
+miss_out_list.py
 /createJSON.py
 qrGenerator.py

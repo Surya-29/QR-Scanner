@@ -1,10 +1,11 @@
 let textBox = document.getElementById("dialog");
+let countBox = document.getElementById("counterDialog");
 let initId = document.getElementById("initId");
 let contentBox = document.getElementById("content-box");
 let dayFlag = document.getElementById("dayId");
 let cacheArray = [];
 let index = 0;
-
+let counter = 0;
 let checkVar = "";
 
 function init() {
@@ -38,9 +39,11 @@ function getData(encText, dayID, index) {
     textBox.style.fontSize = "26px";
   } else {
     if (checkVar.includes(encText) && dayID == encText.slice(-4)) {
+      count+=1;
       textBox.innerHTML = "VALID &#10003";
       textBox.style.fontSize = "26px";
       textBox.style.color = "green";
+      countBox.innerHTML = "Counter:"+String(count);
       let indOfEntry = checkVar.indexOf(encText);
       checkVar.splice(indOfEntry, 1);
       cont[encText.slice(0, -4)] = checkVar;
