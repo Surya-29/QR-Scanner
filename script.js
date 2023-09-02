@@ -43,7 +43,7 @@ function getData(encText, dayID, index) {
       textBox.innerHTML = "VALID &#10003";
       textBox.style.fontSize = "26px";
       textBox.style.color = "green";
-      countBox.innerHTML = "Counter:"+String(count);
+      countBox.innerHTML = "Counter:"+count;
       let indOfEntry = checkVar.indexOf(encText);
       checkVar.splice(indOfEntry, 1);
       cont[encText.slice(0, -4)] = checkVar;
