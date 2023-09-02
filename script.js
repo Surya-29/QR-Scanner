@@ -5,7 +5,7 @@ let contentBox = document.getElementById("content-box");
 let dayFlag = document.getElementById("dayId");
 let cacheArray = [];
 let index = 0;
-let counter = 0;
+let count = 0;
 let checkVar = "";
 
 function init() {
